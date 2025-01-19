@@ -1,0 +1,434 @@
+/* 全局样式 */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Microsoft YaHei", sans-serif;
+    line-height: 1.6;
+    color: #333;
+}
+
+/* 修改全局颜色变量 */
+:root {
+    --primary-color: #333;          /* 主色调：深灰色 */
+    --secondary-color: #666;        /* 次要色：中灰色 */
+    --accent-color: #b87333;        /* 强调色：铜色 */
+    --text-color: #333;             /* 文字颜色：深灰色 */
+    --light-bg: #fff;               /* 浅色背景：白色 */
+    --dark-bg: #333;                /* 深色背景：深灰色 */
+}
+
+/* 导航栏样式 */
+.navbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background: rgba(255, 255, 255, 0.95);
+    padding: 1rem 5%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    z-index: 1000;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 15px;  /* logo和文字之间的间距 */
+}
+
+.logo img {
+    height: 70px;
+    width: auto;
+    object-fit: contain;
+}
+
+.company-name h1 {
+    font-size: 1.4rem;
+    color: var(--primary-color);
+    font-weight: bold;
+}
+
+.nav-links a {
+    color: #333;
+    text-decoration: none;
+    margin-left: 2rem;
+    font-size: 1.1rem;
+    transition: color 0.3s;
+}
+
+.nav-links a:hover {
+    color: #b87333;
+}
+
+/* 修改Banner样式 */
+.banner {
+    height: 100vh;
+    position: relative;
+    overflow: hidden;
+}
+
+.banner-slides {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-position: center;
+    background-size: cover;
+    transform: translateX(100%);
+    transition: transform 1.2s ease;
+}
+
+.slide::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.5);
+}
+
+.slide.prev {
+    transform: translateX(-100%);
+}
+
+.slide.active {
+    transform: translateX(0);
+    z-index: 1;
+}
+
+.banner-content {
+    position: relative;
+    z-index: 1;
+    text-align: center;
+    color: white;
+    padding: 0 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+.banner-content h1 {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+    .logo img {
+        height: 50px;
+    }
+    
+    .company-name h1 {
+        font-size: 1.1rem;  /* 移动端字体稍小 */
+    }
+    
+    .menu-btn {
+        display: block;
+        font-size: 1.5rem;
+        color: #333;
+        cursor: pointer;
+    }
+    
+    .nav-links {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background: rgba(255, 255, 255, 0.95);
+        padding: 1rem 0;
+        text-align: center;
+    }
+    
+    .nav-links.active {
+        display: block;
+    }
+    
+    .nav-links a {
+        display: block;
+        margin: 1rem 0;
+        color: #333;
+    }
+}
+
+/* 超小屏幕隐藏公司名称 */
+@media (max-width: 480px) {
+    .company-name {
+        display: none;
+    }
+}
+
+/* 通用部分样式 */
+.section {
+    padding: 80px 0;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.section-title {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 50px;
+    color: #333;
+}
+
+/* 关于我们部分 */
+.about-content {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 40px;
+}
+
+.about-text {
+    flex: 1;
+    min-width: 300px;
+}
+
+.about-text h3 {
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+    color: #b87333;
+}
+
+.about-text p {
+    margin-bottom: 15px;
+    line-height: 1.8;
+}
+
+/* 业务范围部分 */
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+}
+
+.service-card {
+    background: #fff;
+    padding: 30px;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    transition: transform 0.3s;
+    border: none;
+}
+
+.service-card:hover {
+    background: var(--dark-bg);
+    color: var(--light-bg);
+    transform: translateY(-10px);
+}
+
+.service-card i {
+    font-size: 3rem;
+    color: #b87333;
+    margin-bottom: 20px;
+}
+
+.service-card h3 {
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+}
+
+.service-card:hover i,
+.service-card:hover h3 {
+    color: var(--light-bg);
+}
+
+/* 响应式调整 */
+@media (max-width: 768px) {
+    .section-title {
+        font-size: 2rem;
+    }
+    
+    .about-content {
+        flex-direction: column;
+    }
+    
+    .services-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* 修改页脚样式 */
+footer {
+    background: #333;
+    color: #fff;
+    padding: 2rem 0;
+}
+
+.social-links a {
+    color: #fff;
+}
+
+.social-links a:hover {
+    color: #b87333;
+}
+
+/* 新闻资讯部分样式 */
+.news-container {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 30px;
+}
+
+.news-iframe-wrapper {
+    position: relative;
+    width: 100%;
+    height: 600px;
+    overflow: hidden;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.news-iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+
+.news-list {
+    background: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.news-list h3 {
+    color: var(--primary-color);
+    margin-bottom: 20px;
+    font-size: 1.5rem;
+}
+
+.news-list ul {
+    list-style: none;
+}
+
+.news-list li {
+    margin-bottom: 15px;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 15px;
+}
+
+.news-list a {
+    display: flex;
+    justify-content: space-between;
+    text-decoration: none;
+    color: var(--text-color);
+    transition: color 0.3s;
+}
+
+.news-list a:hover {
+    color: var(--accent-color);
+}
+
+.news-date {
+    color: #666;
+    font-size: 0.9rem;
+}
+
+/* 移动端适配 */
+@media (max-width: 768px) {
+    .news-container {
+        grid-template-columns: 1fr;
+    }
+    
+    .news-iframe-wrapper {
+        height: 400px;
+    }
+}
+
+/* 项目案例部分样式 */
+.cases-container {
+    display: grid;
+    gap: 30px;
+}
+
+.case-card {
+    background: #fff;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    transition: transform 0.3s;
+}
+
+.case-card:hover {
+    transform: translateY(-5px);
+}
+
+.case-image {
+    width: 100%;
+    height: 300px;
+    overflow: hidden;
+}
+
+.case-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s;
+}
+
+.case-card:hover .case-image img {
+    transform: scale(1.05);
+}
+
+.case-content {
+    padding: 20px;
+}
+
+.case-content h3 {
+    color: var(--primary-color);
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+}
+
+.case-description {
+    color: var(--text-color);
+    margin-bottom: 20px;
+    line-height: 1.6;
+}
+
+.case-details {
+    display: flex;
+    gap: 20px;
+    color: var(--secondary-color);
+    font-size: 0.9rem;
+}
+
+.case-details i {
+    margin-right: 5px;
+    color: var(--accent-color);
+}
+
+/* 移动端适配 */
+@media (max-width: 768px) {
+    .case-image {
+        height: 200px;
+    }
+    
+    .case-details {
+        flex-direction: column;
+        gap: 10px;
+    }
+} 
